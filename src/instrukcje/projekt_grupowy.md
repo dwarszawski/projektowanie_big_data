@@ -17,7 +17,7 @@
 * Projekt realizowany w grupach 2-3 osobowych
 * Akceptacja projektu wymagana do zaliczenia przedmiotu i podejścia do egzaminu końcowego
 * Kod źródłowy z plikem README.md
-* Architektura systemu jako diagram
+* Architektura systemu jako diagram komponentów
 * Opis poszczególnych komponentów i ich rola
 * Schemat danych wejściowych wraz z opisem
 * Schemat danych ustrukturyzowanych wraz z opisem
