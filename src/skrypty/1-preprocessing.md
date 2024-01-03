@@ -18,38 +18,7 @@
 
 ### Architektura do zaimplementowania
 
-```puml
-@startuml
-!pragma layout smetana
-!theme aws-orange
-
-!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
-
-!include AWSPuml/AWSCommon.puml
-!include AWSPuml/AWSC4Integration.puml
-!include AWSPuml/AWSSimplified.puml
-!include AWSPuml/AWSRaw.puml
-!include AWSPuml/ApplicationIntegration/all.puml
-!include AWSPuml/Compute/all.puml
-!include AWSPuml/Containers/all.puml
-!include AWSPuml/Database/all.puml
-!include AWSPuml/General/all.puml
-!include AWSPuml/Analytics/all.puml
-!include AWSPuml/Storage/all.puml
-
-SimpleStorageService(LandingZone, "Surowe dane", " ") #White
-Glue(ETL, "Aplikacja PySpark", " ") #White
-SimpleStorageService(FormattedData, "Sformatowane dane", " ") #White
-GlueDataCatalog(DataCatalog, "Katalog AWS Glue", " ") #White
-Athena(Athena, "Athena", " ") #White
-
-LandingZone -> ETL: odczyt surowych danych
-ETL-> FormattedData: zapis do formatu parquet
-FormattedData -> DataCatalog: utworzenie bazy danych
-DataCatalog <-> Athena: utworzenie tabeli,\n odczyt partycji
-
-@enduml
-```
+![plantuml-preparation.png](../zrzuty/plantuml-preparation.png)
 
 ### Przygotowanie danych źródłowych
 
