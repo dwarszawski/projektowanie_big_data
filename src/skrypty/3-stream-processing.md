@@ -1,5 +1,40 @@
 ## Wykrywanie anomalii w czasie rzeczywistym
 
+### Architektura do zaimplementowania
+
+```puml
+@startuml
+!pragma layout smetana
+!theme aws-orange
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSC4Integration.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/AWSRaw.puml
+!include AWSPuml/ApplicationIntegration/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/Database/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Analytics/all.puml
+!include AWSPuml/Storage/all.puml
+
+SimpleStorageService(LandingZone, "Surowe dane", " ") #White
+Lambda(Producer, "Generator komunikatów", " ") #White
+KinesisDataStreams(InputStream, "Strumień recenzji", " ") #White
+ManagedServiceforApacheFlink(StreamProcessor, "Procesowanie w czasie rzeczywistym", " ") #White
+KinesisDataStreams(OutputStream, "Strumień podejrzanych użytkowników", " ") #White
+
+LandingZone --> Producer: odczyt surowych danych
+Producer --> InputStream: wygenerowanie komunikatu\n dla każdej odczytanej recenzji
+InputStream --> StreamProcessor: wykrywanie podejrzanej aktywności
+StreamProcessor --> OutputStream: zapisanie podejrzanej\n aktywności jako komunikat na kolejke
+
+@enduml
+```
+
 ### Konfiguracja środowiska do procesowania strumieniowego
 
 1. Utwórz rozproszone kolejki danych

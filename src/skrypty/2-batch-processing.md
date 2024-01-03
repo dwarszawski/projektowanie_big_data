@@ -1,5 +1,49 @@
 ## Ranking najlepszych filmów
 
+### Architektura do zaimplementowania
+
+```puml
+@startuml
+!pragma layout smetana
+!theme aws-orange
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSC4Integration.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/AWSRaw.puml
+!include AWSPuml/ApplicationIntegration/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/Database/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Analytics/all.puml
+!include AWSPuml/Storage/all.puml
+
+SimpleStorageService(FormattedData, "Sformatowane dane", " ") #White
+SimpleStorageService(Output, "Ranking", " ") #White
+GlueDataCatalog(DataCatalog, "Katalog AWS Glue", " ") #White
+Athena(Athena, "Athena", " ") #White
+
+EMRCluster(EMRCluster, "klaster EMR", " ") #White
+Batch(BatchJob, "Aplikacja PySpark", " ") #White
+
+FormattedData -> DataCatalog: katalog danych
+DataCatalog -> Athena: analiza danych z wykorzystaniem zapytań SQL
+
+Athena -[hidden]-> EMRCluster
+
+BatchJob -u-> EMRCluster: uruchomienie procesu ETL
+
+FormattedData -> BatchJob: odczyt danych
+BatchJob -> BatchJob: przetwarzania danych
+BatchJob --> Output: zapis danych
+
+@enduml
+```
+
+
 ### Analiza danych z wykorzystaniem Amazon Athena
 
 1. Utwórz S3 bucket do przechowywania wyników zapytań

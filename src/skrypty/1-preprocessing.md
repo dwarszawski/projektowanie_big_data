@@ -14,7 +14,43 @@
    ![start_aws.png](../zrzuty/start_aws.png)
    ```
    Sesja konsoli AWS trwa 3h. Żeby zapewnic ciągłośc sesji bez ponownego uruchamiania konsoli należy kliknąc "Start Lab" ponownie zanim sesja wygaśnie.
-   ```
+   ``` 
+
+### Architektura do zaimplementowania
+
+```puml
+@startuml
+!pragma layout smetana
+!theme aws-orange
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v17.0/dist
+
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSC4Integration.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/AWSRaw.puml
+!include AWSPuml/ApplicationIntegration/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/Database/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Analytics/all.puml
+!include AWSPuml/Storage/all.puml
+
+SimpleStorageService(LandingZone, "Surowe dane", " ") #White
+Glue(ETL, "Aplikacja PySpark", " ") #White
+SimpleStorageService(FormattedData, "Sformatowane dane", " ") #White
+GlueDataCatalog(DataCatalog, "Katalog AWS Glue", " ") #White
+Athena(Athena, "Athena", " ") #White
+
+LandingZone -> ETL: odczyt surowych danych
+ETL-> FormattedData: zapis do formatu parquet
+FormattedData -> DataCatalog: utworzenie bazy danych
+DataCatalog <-> Athena: utworzenie tabeli,\n odczyt partycji
+
+@enduml
+```
+
 ### Przygotowanie danych źródłowych
 
 1. Pobierz lokalnie plik `sample.json` ze zbioru danych [IMDb Review Dataset](https://www.kaggle.com/datasets/ebiswas/imdb-review-dataset/data) udostępnionych na platformie Kaggle.
