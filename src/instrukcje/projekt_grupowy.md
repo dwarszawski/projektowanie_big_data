@@ -4,7 +4,6 @@
 1) Zaprojektowanie procesu ETL lub ELT do przetwarzania wsadowego surowych danych wejściowych do postaci ustrukturyzowanej. Analiza danych wejściowych do określenia wzorców i trendów.
 2) Zaprojektowanie procesu ETL lub ELT do przetwarzania strumieniowego surowych danych. Zasymulowanie procesu pozyskiwania i analizy danych w czasie rzeczywistym do określenia wzorców i trendów.
 
-
 ## Wymagania
 * Wyznaczenie praktycznego celu pracy: wymagania funkcjonalne i techniczne (atrybuty jakości)
 * Wykorzystanie istniejących zbiorów danych lub symulacja danych wejściowych

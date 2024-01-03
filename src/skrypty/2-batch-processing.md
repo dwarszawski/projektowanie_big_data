@@ -1,6 +1,6 @@
 ## Ranking najlepszych filmów
 
-### Analiza danych z wykorzystaniem z wykorzystaniem Amazon Athena
+### Analiza danych z wykorzystaniem Amazon Athena
 
 1. Utwórz S3 bucket do przechowywania wyników zapytań
    ```
@@ -59,10 +59,7 @@
 ### Implementacja procesu ETL do wygenerowania rankingu filmów
 
 ```
-Proces ETL:
-* dodatkowa kolumna reprezentujaca rok
-* filtrowanie gdzie rating jest pusty
-* wygenerowanie rekomendacji na każdy rok
+Celem procesu ETL jest wygenerowanie rankingu najlepszych filmów na każdy rok i posortowanie ich w kolejności od najnowszych
 ```
 
 1. W środowisku `Cloud9 IDE` utwórz nowy plik `myapp.py`
@@ -107,16 +104,16 @@ Proces ETL:
    aws s3api create-bucket --bucket ${ACCOUNT_ID}-result --region us-east-1
    ```
 4. Utwórz S3 bucket do przechowywania skryptów aplikacji PySpark
-```
-Uruchom skrypt poniżej przez `CloudShell` lub utwórz z poziomu serwisu `Amazon S3/Buckets`
-```
+   ```
+   Uruchom skrypt poniżej przez `CloudShell` lub utwórz z poziomu serwisu `Amazon S3/Buckets`
+   ```
 
-```shell
-aws s3api create-bucket --bucket ${ACCOUNT_ID}-spark --region us-east-1
-```  
+   ```shell
+   aws s3api create-bucket --bucket ${ACCOUNT_ID}-spark --region us-east-1
+   ```  
 5. Pobierz skrypt `myapp.py` lokalnie i prześlij do dedykowanej ścieżki na S3
 
-![s3_upload_app.png](../zrzuty/s3_upload_app.png)
+   ![s3_upload_app.png](../zrzuty/s3_upload_app.png)
 
 6. Uruchom proces ETL
 

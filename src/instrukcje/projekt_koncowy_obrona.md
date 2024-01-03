@@ -1,4 +1,4 @@
-# Praca końcowa - Projektowanie rozwiązań Big Data
+# Praca końcowa i obrona - Projektowanie rozwiązań Big Data (TYLKO DLA CHĘTNYCH JAKO ALTERNATYWA DO ZALICZENIA W FORMIE PROJEKTU GRUPOWEGO I EGZAMINU USTNEGO)
 
 ## Wymagania
 * Projekt realizowany indywidualnie

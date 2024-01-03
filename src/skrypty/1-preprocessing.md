@@ -20,7 +20,7 @@
 1. Pobierz lokalnie plik `sample.json` ze zbioru danych [IMDb Review Dataset](https://www.kaggle.com/datasets/ebiswas/imdb-review-dataset/data) udostępnionych na platformie Kaggle.
 
    ```
-   Zbiór zawiera 5.5M recenzji filmów. Zbiór jest podzielony na kilka części i zawiera również plik `sample.json, który posłuży do zbudowania pełnego rozwiązania zanim procesowanie zostanie wykonane na pełnym zbiorze.
+   Zbiór zawiera 5.5M recenzji filmów. Zbiór jest podzielony na kilka części i zawiera również plik `sample.json, który posłuży do zbudowania rozwiązania zanim procesowanie zostanie wykonane na pełnym zbiorze.
    ```
 
 2. Utwórz S3 bucket z konsoli AWS. 
@@ -134,7 +134,7 @@
      OUTPUTFORMAT
      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
      LOCATION
-     's3://096609591408-formatted-data/'
+     's3://${ACCOUNT_ID}-formatted-data/'
      TBLPROPERTIES (
      'CrawlerSchemaDeserializerVersion'='1.0',
      'CrawlerSchemaSerializerVersion'='1.0',

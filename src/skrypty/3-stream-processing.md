@@ -98,7 +98,7 @@
 
 1. Z serwisu `AWS Lambda` w zakładce `Functions` kliknij przycisk `Create function`
    * Option: Author from scratch
-   * Function name: reviewProducer
+   * Function name: reviewConsumer
    * Runtime: Python 3.12
    * Architecture: x86_64
 
@@ -120,7 +120,7 @@
        logger.info("Lambda finished")
        return 'Successfully processed {} records.'.format(len(event['Records']))
    ```
-   * Zastąp kod źródłowy w pliku `lambda_function.py` poniższym skryptem:
+   * Po kolejnym uruchomieniu komunikatu testowego z funkcji `reviewProducer` proces nasłuchujący `reviewConsumer` powinien odebrac informacje z kolejki
    
 ### Implementacja procesu wykrywającego anomalie
 
@@ -173,10 +173,11 @@ zip -r  SlidingWindows.zip SlidingWindows
    * Z zakładki `Code` wywołaj funkcję za pomocą przycisku `Test`
 9. Z serwisu `Managed Apache Flink` w zakładce `Apache Flink applications` kliknij aplikację `student` i otwórz widok `Open Apache Flink Dashboard`
    * W zakładce 'Jobs/Running Jobs' proces powinien byc w statusie `Running`
+   
    ![flink_dashboard.png](../zrzuty/flink_dashboard.png)
 10. Z serwisu `Kinesis` w zakładce `Data streams/suspicious_activity` kliknij widok `Data viewer`
     *  sprawdź czy pojawiły się nowe komunikaty
+
     ![kinesis_data_viewer_flink.png](../zrzuty/kinesis_data_viewer_flink.png)
 
 ### Przydatne linki
-* Quicksight - sign up for standard edition - bottom of the page
