@@ -98,33 +98,6 @@
 
    ![kinesis_data_viewer.png](../zrzuty/kinesis_data_viewer.png)
 
-### Implementacja procesu nasłuchującego
-
-1. Z serwisu `AWS Lambda` w zakładce `Functions` kliknij przycisk `Create function`
-   * Option: Author from scratch
-   * Function name: reviewConsumer
-   * Runtime: Python 3.12
-   * Architecture: x86_64
-
-2. Z serwisu `AWS Lambda` w zakładce `Functions` kliknij na nowo utworzoną funkcje `reviewProducer`
-   * Zastąp kod źródłowy w pliku `lambda_function.py` poniższym skryptem:
-
-   ```python
-   import base64
-   import logging
-   
-   logger = logging.getLogger()
-   logger.setLevel("INFO")
-   
-   def lambda_handler(event, context):
-       logger.info("Lambda invoked")
-       for record in event['Records']:
-           payload = base64.b64decode(record['kinesis']['data']).decode('utf-8')
-           print("Decoded payload: " + payload)
-       logger.info("Lambda finished")
-       return 'Successfully processed {} records.'.format(len(event['Records']))
-   ```
-   * Po kolejnym uruchomieniu komunikatu testowego z funkcji `reviewProducer` proces nasłuchujący `reviewConsumer` powinien odebrac informacje z kolejki
    
 ### Implementacja procesu wykrywającego anomalie
 
