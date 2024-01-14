@@ -13,18 +13,19 @@
 * Dobór odpowiednich narzędzi do wyznaczonego celu
 
 ## Wytyczne
-* Projekt realizowany w grupach 2-3 osobowych
-* Akceptacja projektu wymagana do zaliczenia przedmiotu i podejścia do egzaminu końcowego
-* Kod źródłowy z plikem README.md
-* Architektura systemu jako diagram komponentów
-* Opis poszczególnych komponentów i ich rola
-* Schemat danych wejściowych wraz z opisem
-* Schemat danych ustrukturyzowanych wraz z opisem
-* Opis transformacji, łączenia i wzbogacania danych
-* Opis wykorzystywanych metod uczenia maszynowego
-* Opis procesu analizy danych
-* Opis metryk wyjściowych
-* Opis wizualizacji danych i metryk
+* Projekt realizowany w grupach 2-3 osobowych lub indywidualnie
+* Akceptacja projektu wymagana do zaliczenia przedmiotu i podejścia do egzaminu ustnego
+* Przygotowanie infrastruktury na koncie AWS
+* Dokumentacja w formie opisowej od 2 do 5 stron:
+  * Architektura systemu jako diagram komponentów
+  * Opis poszczególnych komponentów i ich rola
+  * Opis transformacji, łączenia i wzbogacania danych
+  * Opis wykorzystywanych metod uczenia maszynowego
+  * Opis procesu analizy danych
+  * Opis metryk wyjściowych
+  * Opis wizualizacji danych i metryk
+  * Numer konta AWS gdzie została przygotowana infrastruktura
+  * Dokumentacja powinna być załączona w systemie OKNO w sekcji "Praca grupowa"
 
 ## Stos technologiczny
 * Infrastruktura:
