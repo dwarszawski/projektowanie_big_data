@@ -36,6 +36,10 @@
 
    * Amazon EMR release: emr-6.15.0
    * Application bundle: Spark interactive (domyślne)
+   * Cluster logs: wyłączyć publikowanie do Amazon S3
+  
+   <img width="793" height="147" alt="image" src="https://github.com/user-attachments/assets/59b2b927-9c0e-4683-85cf-5639897ba37a" />
+
    * Pozostałe według zaleceń `Learner Lab`:
    
    ![emr_learner_lab_prerequsites.png](../zrzuty/emr_learner_lab_prerequsites.png)
